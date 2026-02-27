@@ -1,0 +1,58 @@
+@use "../base/mixins" as *;
+
+.header {
+  background: rgba(245, 240, 235, 0.02);
+  backdrop-filter: blur(16px);
+  position: fixed;
+  width: 100%;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: linear-gradient(
+      108deg,
+      #c9a96e 20.85%,
+      #f1e0c2 34.41%,
+      #c9a96e 50.75%,
+      #927135 72.71%,
+      #927135 81.43%,
+      #c9a96e 98.9%
+    );
+  }
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  padding-bottom: 20px;
+}
+.logo-desktop {
+  display: none;
+  @include tablet {
+    display: block;
+    width: 176px;
+    height: 40px;
+  }
+}
+.logo-mobile {
+  width: 48px;
+  height: 48px;
+  @include tablet {
+    display: none;
+  }
+}
+.header__button {
+  padding: 14px 24px;
+  border-radius: 222px;
+  border: 1px solid var(--color-primary-navy);
+  color: var(--color-primary-navy);
+  font-size: 16px;
+  font-weight: 600;
+}

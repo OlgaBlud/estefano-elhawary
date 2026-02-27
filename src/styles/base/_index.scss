@@ -1,0 +1,10 @@
+/* src/styles/base/_index.scss */
+@forward "./variables";
+@forward "./mixins";
+@forward "./reset";
+@forward "./global";
+@forward "./typography";
+// layout
+@forward "../layout/header";
+// components
+@forward "../components/page-home/hero.scss";

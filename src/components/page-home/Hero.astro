@@ -1,0 +1,103 @@
+---
+import { Image } from "astro:assets";
+import stars from "@/assets/icons/stars.svg";
+
+interface Props {
+  title: string;
+  text: string;
+
+  video: {
+    poster: any;
+    alt: string;
+  };
+
+  cta: {
+    label: string;
+    href: string;
+  };
+
+  metaList?: string[];
+
+  avatarMain: {
+    src: any;
+    alt: string;
+  };
+
+  avatarsClients: {
+    src: any;
+    alt: string;
+  }[];
+
+  quote: string;
+  quoteAuthor: string;
+
+  quoteButton: {
+    label: string;
+    href: string;
+    icon: any;
+  };
+}
+
+const {
+  title,
+  text,
+  video,
+  cta,
+  metaList,
+  avatarMain,
+  avatarsClients,
+  quote,
+  quoteAuthor,
+  quoteButton,
+} = Astro.props;
+---
+
+<section class="hero__section">
+  <div class="container hero__inner">
+    <h1 class="hero__title">{title}</h1>
+    <p class="hero__text">{text}</p>
+    <!-- VIDEO -->
+    <div class="hero__video">
+      <Image src={video.poster} alt={video.alt} class="hero-video-poster" />
+    </div>
+    <a class="hero__cta" href={cta.href}>
+      {cta.label}
+    </a>
+    {
+      metaList && (
+        <ul class="hero__metaList">
+          {metaList.map((item, index) => (
+            <li class="hero__metaList-item">{item}</li>
+          ))}
+        </ul>
+      )
+    }
+    <!-- <div class="hero__quote">
+      <img src={stars.src} alt="" class="hero__stars" />
+
+      <p class="hero__quote-text">
+        {quote}
+      </p>
+
+      <p class="hero__quote-author">
+        {quoteAuthor}
+      </p>
+
+      <a class="hero__quote-button" href={quoteButton.href}>
+        {quoteButton.label}
+        <img src={quoteButton.icon.src} alt="" />
+      </a>
+    </div> -->
+
+    <!-- <div class="hero__avatars">
+      <Image src={avatarMain.src} alt={avatarMain.alt} class="hero__avatar hero__avatar--main" />
+      <div class="hero__avatars-clients">
+        {
+          avatarsClients.map((avatar) => (
+            <Image src={avatar.src} alt={avatar.alt} class="hero__avatar" />
+          ))
+        }
+      </div>
+    </div> -->
+  </div>
+</section>

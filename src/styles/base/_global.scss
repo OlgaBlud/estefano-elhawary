@@ -1,0 +1,59 @@
+// styles/base/global.scss
+@use "./mixins" as *;
+body {
+  background: var(--color-warm-white);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+section {
+  padding: 40px 0;
+
+  @include tablet {
+    padding: 60px 0;
+  }
+
+  @include laptop {
+    padding: 120px 0;
+  }
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 12px;
+
+  @include mobile {
+    max-width: 480px;
+  }
+
+  @include tablet {
+    max-width: 768px;
+    padding: 0 20px;
+  }
+
+  @include laptop {
+    max-width: 1280px;
+    padding: 0 16px;
+  }
+
+  // @include desktop {
+  //   max-width: 1920px;
+  // }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

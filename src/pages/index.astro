@@ -1,0 +1,10 @@
+---
+import type { ACTION_ERROR_CODES } from "astro:actions";
+import Hero from "../components/page-home/Hero.astro";
+import Layout from "../layouts/Layout.astro";
+import { heroData } from "../data/page-home/hero";
+---
+
+<Layout title="Home" description="Premium brand strategy and design">
+  <Hero {...heroData} />
+</Layout>

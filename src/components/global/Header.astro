@@ -1,0 +1,31 @@
+---
+import Logo from "@/assets/logo.svg";
+import LogoMob from "@/assets/logo-mob.svg";
+interface Props {
+  //   logo: {
+  //     src: any;
+  //     alt: string;
+  //     href: string;
+  //   };
+
+  cta: {
+    label: string;
+    href: string;
+  };
+}
+
+const { cta } = Astro.props;
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="/" class="header__logo" aria-label="Estefano Elhawary Logo">
+      <Logo class="logo-desktop" />
+      <LogoMob class="logo-mobile" />
+    </a>
+
+    <a href={cta.href} class="header__button">
+      {cta.label}
+    </a>
+  </div>
+</header>

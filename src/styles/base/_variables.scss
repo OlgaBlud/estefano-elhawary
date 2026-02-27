@@ -1,0 +1,44 @@
+:root {
+  --font-body: "Instrument Sans", sans-serif;
+  --font-heading: "Cormorant Garamond", serif;
+
+  --fs-body: 16px;
+  --fs-h1: 44px;
+
+  --lh-body: 1.5;
+  --lh-h1: 1.1;
+
+  /* === Brand Colors === */
+  --color-primary-gold: #c9a96e;
+  --color-secondary-gold: #d4af37;
+
+  --color-primary-navy: #0a1628;
+  --color-secondary-navy: #1c2541;
+
+  --color-off-white: #faf8f5;
+  --color-warm-white: #f5f0eb;
+
+  /* Text helper */
+  --color-navy-divider-soft: rgba(121, 136, 181, 0.24);
+
+  /* === Gradients === */
+
+  --gradient-blue: linear-gradient(
+    98deg,
+    #0a1628 24.05%,
+    #1c284b 47.57%,
+    #2f3f69 59.54%,
+    #1c284b 74.03%,
+    #0a1628 90.16%
+  );
+
+  --gradient-gold: linear-gradient(
+    108deg,
+    #c9a96e 20.85%,
+    #f1e0c2 34.41%,
+    #c9a96e 50.75%,
+    #927135 72.71%,
+    #927135 81.43%,
+    #c9a96e 98.9%
+  );
+}
