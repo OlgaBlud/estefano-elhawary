@@ -2,8 +2,11 @@
 import Hero from "../components/page-home/Hero.astro";
 import Layout from "../layouts/Layout.astro";
 import { heroData } from "../data/page-home/hero";
+import Problems from "@/components/page-home/Problems.astro";
+import { problemsData } from "@/data/page-home/problems.js";
 ---
 
 <Layout title="Home" description="Premium brand strategy and design">
   <Hero {...heroData} />
+  <Problems {...problemsData} />
 </Layout>
