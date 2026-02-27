@@ -4,6 +4,7 @@
   background: rgba(245, 240, 235, 0.02);
   backdrop-filter: blur(16px);
   position: fixed;
+  z-index: 1000;
   width: 100%;
   &::before {
     content: "";

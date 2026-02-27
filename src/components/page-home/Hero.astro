@@ -1,41 +1,43 @@
 ---
 import { Image } from "astro:assets";
-import stars from "@/assets/icons/stars.svg";
+import Stars from "@/assets/icons/stars.svg";
+type MediaImage = {
+  src: ImageMetadata;
+  alt: string;
+};
+
+type VideoPoster = {
+  poster: ImageMetadata;
+  alt: string;
+};
+
+export interface ProofInfo {
+  proofNum: string;
+  proofText: string;
+}
 
 interface Props {
   title: string;
   text: string;
-
-  video: {
-    poster: any;
-    alt: string;
-  };
-
+  video: VideoPoster;
   cta: {
     label: string;
     href: string;
+    icon: ImageMetadata;
   };
-
   metaList?: string[];
-
-  avatarMain: {
-    src: any;
-    alt: string;
-  };
-
-  avatarsClients: {
-    src: any;
-    alt: string;
-  }[];
-
+  avatarMain: MediaImage;
+  avatarsClients: MediaImage[];
   quote: string;
   quoteAuthor: string;
-
   quoteButton: {
     label: string;
     href: string;
-    icon: any;
+    icon: ImageMetadata;
   };
+  logosText: string;
+  logosClient: { src: string; alt: string }[];
+  proofInfo: ProofInfo[];
 }
 
 const {
@@ -49,6 +51,9 @@ const {
   quote,
   quoteAuthor,
   quoteButton,
+  logosText,
+  logosClient,
+  proofInfo,
 } = Astro.props;
 ---
 
@@ -58,46 +63,87 @@ const {
     <p class="hero__text">{text}</p>
     <!-- VIDEO -->
     <div class="hero__video">
-      <Image src={video.poster} alt={video.alt} class="hero-video-poster" />
+      <Image src={video.poster} alt={video.alt} class="hero__video__poster" />
     </div>
-    <a class="hero__cta" href={cta.href}>
-      {cta.label}
-    </a>
-    {
-      metaList && (
-        <ul class="hero__metaList">
-          {metaList.map((item, index) => (
-            <li class="hero__metaList-item">{item}</li>
-          ))}
-        </ul>
-      )
-    }
-    <!-- <div class="hero__quote">
-      <img src={stars.src} alt="" class="hero__stars" />
-
-      <p class="hero__quote-text">
-        {quote}
-      </p>
-
-      <p class="hero__quote-author">
-        {quoteAuthor}
-      </p>
-
-      <a class="hero__quote-button" href={quoteButton.href}>
-        {quoteButton.label}
-        <img src={quoteButton.icon.src} alt="" />
+    <div class="hero__cta__wrap">
+      <a class="hero__cta" href={cta.href}>
+        {cta.label}
+        <img src={cta.icon.src} alt="" />
       </a>
-    </div> -->
+      {
+        metaList && (
+          <ul class="hero__metaList">
+            {metaList.map((item, index) => (
+              <li class="hero__metaList__item">{item}</li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+    <div class="hero__trust">
+      <div class="hero__quote__block">
+        <div class="hero__main__avatar-wrap">
+          <div class="hero__main__avatar-inner-wrap">
+            <Image
+              src={avatarMain.src}
+              alt={avatarMain.alt}
+              class="hero__avatar hero__avatar__main"
+            />
+          </div>
+        </div>
+        <div class="hero-rate-info">
+          <div class="hero__avatars__clients">
+            {
+              avatarsClients.map((avatar) => (
+                <div class="hero__avatar__client__wrap">
+                  <Image src={avatar.src} alt={avatar.alt} class="hero__avatar" />
+                </div>
+              ))
+            }
+          </div>
+          <Stars class="hero__rating__stars" />
+        </div>
+        <div class="hero__quote-wrap">
+          <p class="hero__quote-text">
+            {quote}
+          </p>
+          <p class="hero__quote-author">
+            {quoteAuthor}
+          </p>
+          <a class="hero__quote-button" href={quoteButton.href}>
+            {quoteButton.label}
+            <img src={quoteButton.icon.src} alt="" />
+          </a>
+        </div>
+      </div>
 
-    <!-- <div class="hero__avatars">
-      <Image src={avatarMain.src} alt={avatarMain.alt} class="hero__avatar hero__avatar--main" />
-      <div class="hero__avatars-clients">
+      <div class="hero_trust_logos-block">
+        {logosText && <p class="hero-proof__text">{logosText}</p>}
+
         {
-          avatarsClients.map((avatar) => (
-            <Image src={avatar.src} alt={avatar.alt} class="hero__avatar" />
-          ))
+          logosClient?.length > 0 && (
+            <ul class="hero-proof__logos">
+              {logosClient.map((logo) => (
+                <li class="hero-proof__logo">
+                  <img src={logo.src} alt={logo.alt} />
+                </li>
+              ))}
+            </ul>
+          )
         }
       </div>
-    </div> -->
+      {
+        proofInfo?.length > 0 && (
+          <ul class="hero__trust__stats-list">
+            {proofInfo.map((item) => (
+              <li class="hero-proof__stat">
+                <p class="hero-proof__num">{item.proofNum}</p>
+                <p class="hero-proof__label">{item.proofText}</p>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
   </div>
 </section>
