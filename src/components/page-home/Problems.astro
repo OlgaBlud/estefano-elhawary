@@ -1,0 +1,47 @@
+---
+type Props = {
+  title: string;
+  text: string;
+  subtitle: string;
+  subtext: string;
+  cards: {
+    number: string;
+    title: string;
+    text: string;
+    list: {
+      title: string;
+      text: string;
+    }[];
+  }[];
+};
+const { title, text, subtitle, subtext, cards } = Astro.props;
+---
+
+<section class="home-problem__section">
+  <div class="container">
+    <h2 class="home-problem__title">{title}</h2>
+    <p class="home-problem__text">{text}</p>
+    <div class="home-problem__decor"></div>
+    <h3 class="home-problem__subtitle">{subtitle}</h3>
+    <p class="home-problem__subtext">{subtext}</p>
+    <ul class="home-problem__cards">
+      {
+        cards.map((card) => (
+          <li class="home-problem__card">
+            <div class="home-problem__card-number">{card.number}</div>
+            <h4 class="home-problem__card-title">{card.title}</h4>
+            <p class="home-problem__card-text">{card.text}</p>
+            <ul class="home-problem__card-list">
+              {card.list.map((item) => (
+                <li class="home-problem__card-list-item">
+                  <h5 class="home-problem__card-list-title">{item.title}</h5>
+                  <p class="home-problem__card-list-text">{item.text}</p>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
